@@ -4,7 +4,8 @@
     "private": true,
     "description": "Server",
     "scripts": {
-        "install": "cd server && cd web && npm install",
+        "install": "cd web && npm install",
+        "serve": "cd web && node index.js",
         "build": "ng build --prod",
         "test": "jest",
         "start": "node index.js"
