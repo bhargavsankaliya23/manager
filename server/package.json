@@ -1,5 +1,5 @@
 {
-    "name": "app-server",
+    "name": "@bhargavsankaliya23/manager",
     "version": "1.0.0",
     "private": true,
     "description": "Server",
@@ -16,7 +16,14 @@
     "keywords": [],
     "author": "",
     "license": "MIT",
-    "repository": {},
+    "repository": {
+        "type":"git",
+        "url" : "https://github.com/bhargavsankaliya23/manager.git"
+    },
+    "bugs" : {
+        "url" : "https://github.com/bhargavsankaliya23/manager/issues"  
+    },
+    "homepage" : "https://github.com/bhargavsankaliya23/manager#readme",
     "dependencies": {
         "async": "^3.2.4",
         "bcryptjs": "^2.4.3",
