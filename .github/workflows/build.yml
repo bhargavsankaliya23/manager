@@ -44,5 +44,5 @@ jobs:
       #   run: npm run build
 
       - name: Run tests (if applicable)
-        # working-directory: ../../server/web/
-        run: "cd web && node index.js"
+        working-directory: server/web
+        run: node index.js
