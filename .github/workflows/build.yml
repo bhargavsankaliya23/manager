@@ -37,11 +37,11 @@ jobs:
 
       - name: Install dependencies
         # working-directory: ../../server/web/
-        run: npm run install
+        run: "cd web && npm install"
 
       # - name: Build the project
       #   run: npm run build
 
       - name: Run tests (if applicable)
         # working-directory: ../../server/web/
-        run: npm run serve
+        run: "cd web && node index.js"
