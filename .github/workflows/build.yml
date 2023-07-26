@@ -7,5 +7,5 @@ jobs :
       - run : node --version
       - run : npm --version
       - uses : actions/checkout@v3
-      - run : server/web/npm install
-      - run : server/npm run serve
+      - run : "cd server && cd web && npm install"
+      - run : "cd server && cd web && node index.js"
