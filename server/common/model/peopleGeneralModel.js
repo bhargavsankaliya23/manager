@@ -1,0 +1,140 @@
+const ModelBase = require("./modelBase");
+const CONFIG = require("../../config");
+const _ = require("lodash")
+
+class peopleGeneralModel extends ModelBase {
+    constructor() {
+        super(CONFIG.DB.MONGO.DB_NAME, "peopleGeneralInfo", {
+            firstName: { type: String, allowNullEmpty: false },
+            lastName: { type: String, allowNullEmpty: true },
+            email: { type: String, allowNullEmpty: false },
+            mobile: { type: String, allowNullEmpty: false },
+            role: { type: Object, allowNullEmpty: true },
+            location: { type: Object, allowNullEmpty: false },
+
+            password: { type: String, allowNullEmpty: false },
+            kioskPin: { type: String, allowNullEmpty: false },
+            allowKioskLogin: { type: Boolean, allowNullEmpty: true },
+            allowMobile: { type: Boolean, allowNullEmpty: true },
+            isSalaried: { type: Boolean, allowNullEmpty: true },
+            salaryAmount: { type: String, allowNullEmpty: true },
+
+            profilePicture: { type: String, allowNullEmpty: true },
+            gender: { type: String, allowNullEmpty: false },
+            birthDate: { type: String, allowNullEmpty: true },
+            displayName: { type: String, allowNullEmpty: false },
+            hireDate: { type: String, allowNullEmpty: false },
+            height: { type: String, allowNullEmpty: true },
+            weight: { type: String, allowNullEmpty: true },
+            bloodGroup: { type: String, allowNullEmpty: true },
+
+            jobPosition: { type: Object, allowNullEmpty: false },
+            address: { type: String, allowNullEmpty: true },
+            country: { type: String, allowNullEmpty: false },
+            state: { type: String, allowNullEmpty: false },
+            city: { type: String, allowNullEmpty: false },
+
+            emergencyContactName: { type: String, allowNullEmpty: false },
+            emergencyContactNo: { type: String, allowNullEmpty: false },
+
+            status: {
+                type: Number,
+                allowNullEmpty: false,
+                enum: { 1: "active", 2: "inactive" }
+            },
+        });
+    }
+
+    /**
+     * @description create Always return an unique id after inserting new user
+     * @param {*} data
+     * @param {*} cb
+     */
+    create(data, cb) {
+        var err = this.validate(data);
+
+        if (err) {
+            return cb(err);
+        }
+
+        data.createdAt = new Date();;
+        data.status = 1;
+        this.insert(data, (err, result) => {
+            if (err) {
+                return cb(err);
+            }
+
+            cb(null, result.ops[0]);
+        });
+    }
+
+    find(conditions, options, cb) {
+        this.getModel(function (err, model) {
+            if (err) {
+                return cb(err);
+            }
+            if (!_.isEmpty(options)) {
+                const limit = (!_.isEmpty(options) && options.limit) ? options.limit : 20;
+                const skip = options.skip ? options.skip : 0;
+                const sort = options.sort ? options.sort : { _id: -1 };
+                model.find(conditions).sort(options.sort).skip(options.skip).limit(options.limit).toArray(cb);
+            } else {
+                model.find(conditions).toArray(cb);
+            }
+        });
+    }
+
+
+    update(query, data, cb) {
+        // if (data.birthDate) {
+        //     data.birthDate = new Date(data.birthDate);
+        // }
+        // if (data.hireDate) {
+        //     data.hireDate = new Date(data.hireDate);
+        // }
+
+        console.log(data);
+
+        var err = this.validate(data);
+        if (err) {
+            return cb(err);
+        }
+
+        data.updatedAt = new Date();
+        var self = this;
+        self.updateOne(query, { $set: data }, function (err, result) {
+            if (err) {
+                return cb(err);
+            }
+            cb(null, result);
+        });
+    }
+
+    advancedAggregate(query, options, cb) {
+        // do a validation with this.schema
+        this.getModel(function (err, model) {
+            if (err) {
+                return cb(err);
+            }
+            if (!_.isEmpty(options)) {
+                const limit = (!_.isEmpty(options) && options.limit) ? options.limit : 2000000;
+                const skip = options.skip ? options.skip : 0;
+                const sort = options.sort ? options.sort : { _id: -1 };
+                model.aggregate(query).skip(skip).limit(limit).sort(sort).toArray(cb);
+            } else {
+                model.aggregate(query).toArray(cb);
+            }
+        });
+    }
+    aggregate(query, cb) {
+        // do a validation with this.schema
+        this.getModel(function (err, model) {
+            if (err) {
+                return cb(err);
+            }
+            model.aggregate(query).toArray(cb);
+        });
+    }
+}
+
+module.exports = peopleGeneralModel;

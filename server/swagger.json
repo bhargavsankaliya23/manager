@@ -1,0 +1,826 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Manager API",
+        "contact": {}
+    },
+    "host": "localhost:3000",
+    "basePath": "/v1",
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "scheme": "bearer"
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/role-master/create": {
+            "post": {
+                "summary": "create",
+                "tags": [
+                    "Role Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "create",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/roleCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/role-master/update": {
+            "post": {
+                "summary": "update",
+                "tags": [
+                    "Role Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "update",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/roleUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/role-master/active-deactive": {
+            "get": {
+                "summary": "active-deactive",
+                "tags": [
+                    "Role Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "active-deactive",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/role-master/active-list": {
+            "get": {
+                "summary": "active-list",
+                "tags": [
+                    "Role Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "active-list",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/role-master/list": {
+            "get": {
+                "summary": "list",
+                "tags": [
+                    "Role Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "list",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/role-master/listdata-byId": {
+            "get": {
+                "summary": "listdata-byId",
+                "tags": [
+                    "Role Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "listdata-byId",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/role-master/delete": {
+            "get": {
+                "summary": "delete",
+                "tags": [
+                    "Role Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "delete",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/csv/csv-upload": {
+            "post": {
+                "summary": "update",
+                "tags": [
+                    "CSV Upload"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "update",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "excelUpload",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/people-info/general-info-create-update": {
+            "post": {
+                "summary": "create",
+                "tags": [
+                    "People Info"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "create",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/generalInfoCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/people-info/general-info-list": {
+            "get": {
+                "summary": "list",
+                "tags": [
+                    "People Info"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "list",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/people-info/general-info-list-byID": {
+            "get": {
+                "summary": "general-info=list-byId",
+                "tags": [
+                    "People Info"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "listdata-byId",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/job-position/create": {
+            "post": {
+                "summary": "create",
+                "tags": [
+                    "Job Position"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "create",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/jobPositionCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/job-position/list": {
+            "get": {
+                "summary": "list",
+                "tags": [
+                    "Job Position"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "list",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/location-master/createUpdate": {
+            "post": {
+                "summary": "create",
+                "tags": [
+                    "Location Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "create",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "type": "string",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/locationCreateUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/location-master/list": {
+            "get": {
+                "summary": "list",
+                "tags": [
+                    "Location Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "list",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/location-master/activeList": {
+            "get": {
+                "summary": "activeList",
+                "tags": [
+                    "Location Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "activeList",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/location-master/listById": {
+            "get": {
+                "summary": "listdata-byId",
+                "tags": [
+                    "Location Master"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "operationId": "listdata-byId",
+                "deprecated": false,
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "roleCreate": {
+            "title": "Role Create",
+            "example": {
+                "roleName": "Admin"
+            },
+            "type": "object",
+            "properties": {
+                "roleName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "roleName"
+            ]
+        },
+        "roleUpdate": {
+            "title": "Role Update",
+            "example": {
+                "roleName": "Admin"
+            },
+            "type": "object",
+            "properties": {
+                "roleName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "roleName"
+            ]
+        },
+        "generalInfoCreate": {
+            "title": "People Info Create",
+            "example": {
+                "firstName": "Admin",
+                "lastName": "Admin",
+                "email": "Admin",
+                "mobile": "Admin",
+                "role": "64b77e8357a78e0a3025536b",
+                "location": "Admin",
+                "password": "Admin",
+                "kioskPin": "Admin",
+                "allowKioskLogin": true,
+                "allowMobile": false,
+                "isSalaried": false,
+                "salaryAmount": "Admin",
+                "gender": "Male",
+                "birthDate": "2023/01/23",
+                "displayName": "abc",
+                "hireDate": "2023/01/23",
+                "height": "5",
+                "weight": "50",
+                "bloodGroup": "",
+                "jobPosition": "64b77e8357a78e0a3025536b",
+                "address": "abd",
+                "country": "India",
+                "state": "Gujarat",
+                "city": "Ahmedabad",
+                "emergencyContactName": "ABCD",
+                "emergencyContactNo": "78977897987"
+            },
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "kioskPin": {
+                    "type": "string"
+                },
+                "allowKioskLogin": {
+                    "type": "boolean"
+                },
+                "allowMobile": {
+                    "type": "boolean"
+                },
+                "isSalaried": {
+                    "type": "boolean"
+                },
+                "salaryAmount": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "birthDate": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "hireDate": {
+                    "type": "string"
+                },
+                "height": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "string"
+                },
+                "bloodGroup": {
+                    "type": "string"
+                },
+                "jobPosition": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "emergencyContactName": {
+                    "type": "string"
+                },
+                "emergencyContactNo": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "email",
+                "mobile",
+                "firstName",
+                "role",
+                "location",
+                "password",
+                "kioskLogin",
+                "gender",
+                "displayName",
+                "hireDate",
+                "jobPosition",
+                "country",
+                "state",
+                "city",
+                "emergencyContactName",
+                "emergencyContactNo"
+            ]
+        },
+        "jobPositionCreate": {
+            "title": "Job Position Create",
+            "example": {
+                "name": "Developer"
+            },
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "locationCreateUpdate": {
+            "title": "Location Create Update",
+            "example": {
+                "name": "Vidhan",
+                "outletType": "Company",
+                "email": "vidhaninfotech@gmail.com",
+                "fax": "vidan@fax.com",
+                "contactNo": "8866979789",
+                "address": "scienceCity , ahmedabad",
+                "country": "India",
+                "state": "Gujarat",
+                "postalCode": "380015"
+            },
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "outletType": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fax": {
+                    "type": "string"
+                },
+                "contactNo": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "outletType",
+                "email",
+                "fax",
+                "contactNo",
+                "country",
+                "state",
+                "address"
+            ]
+        }
+    },
+    "tags": [
+        {
+            "name": "Role Master"
+        },
+        {
+            "name": "CSV Upload"
+        },
+        {
+            "name": "People Info"
+        },
+        {
+            "name": "Job Position"
+        },
+        {
+            "name": "Location Master"
+        }
+    ]
+}

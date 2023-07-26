@@ -1,0 +1,27 @@
+{
+    "APP": {
+        "WEB": {
+            "PROTOCOL": "http",
+            "HOST": "mongodb://localhost:27017",
+            "PORT": 3001
+        }
+    },
+    "LOGGER": {
+        "LEVEL": 0,
+        "DATA_PATH": "bg_info.log",
+        "INFO_PATH": "bg_info.log",
+        "ERROR_PATH": "bg_err.log",
+        "CRITICAL_PATH": "bg_err.log"
+    },
+    "DB": {
+        "MONGO": {
+            "DB_NAME": "Manager",
+            "SERVER_URL": "mongodb+srv://vidhaninfotech:VidhanInfotech%401234@manager.psm2err.mongodb.net/?retryWrites=true&w=majority"
+        }
+    },
+    "MAIL": {
+        "SERVICEPROVIDER": " ",
+        "MAILID": " ",
+        "PASSWORD": " "
+    }
+}
