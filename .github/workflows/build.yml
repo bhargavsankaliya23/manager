@@ -7,5 +7,5 @@ jobs :
       - run : node --version
       - run : npm --version
       - uses : actions/checkout@v3
-      - run : serve/web/npm install
-      - run : serve/npm run serve
+      - run : server/web/npm install
+      - run : server/npm run serve
