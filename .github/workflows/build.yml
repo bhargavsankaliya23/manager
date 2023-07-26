@@ -36,12 +36,12 @@ jobs:
           node-version: "14.18.1"
 
       - name: Install dependencies
-        working-directory: ../../server/web/
-        run: npm install
+        # working-directory: ../../server/web/
+        run: "cd server && cd web && npm install"
 
       # - name: Build the project
       #   run: npm run build
 
       - name: Run tests (if applicable)
-        working-directory: ../../server/web/
-        run: node index.js
+        # working-directory: ../../server/web/
+        run: "cd server && cd web && node index.js"
