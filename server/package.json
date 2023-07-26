@@ -6,7 +6,8 @@
     "scripts": {
         "install": "cd server && cd web && npm install",
         "build": "ng build --prod",
-        "test": "cd server && cd web && node index.js"
+        "test": "jest",
+        "start": "node index.js"
     },
     "keywords": [],
     "author": "",
