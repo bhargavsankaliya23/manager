@@ -11,7 +11,7 @@
         "build": "ng build --prod",
         "e2e": "ng e2e",
         "ng": "ng",
-        "serve": "cd web && node index.js"
+        "serve": "cd server && cd web && node index.js"
     },
     "keywords": [],
     "author": "",
