@@ -1,16 +1,45 @@
-name: Manager
+# name: Manager
 
-on: push
+# on: push
+
+# jobs:
+#   build-node:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: 14.18.1
+
+#       - run: "cd server && cd web && npm install"
+#       - run: "cd server && cd web && node index.js"
+
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build-node:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - run: "cd server && cd web && npm install"
-      - run: "cd server && cd web && node index.js"
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.18.1"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Run tests (if applicable)
+        run: npm run test

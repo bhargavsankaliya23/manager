@@ -4,14 +4,9 @@
     "private": true,
     "description": "Server",
     "scripts": {
-        "preinstall": "",
-        "lint": "tslint ./src/**/*.ts -t verbose",
-        "start": "ng serve",
-        "test": "ng test",
+        "install": "cd server && cd web && npm install",
         "build": "ng build --prod",
-        "e2e": "ng e2e",
-        "ng": "ng",
-        "serve": "cd server && cd web && node index.js"
+        "test": "cd server && cd web && node index.js"
     },
     "keywords": [],
     "author": "",
